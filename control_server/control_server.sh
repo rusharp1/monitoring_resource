@@ -4,7 +4,8 @@
 SERVER_IP=$1
 ACTION=$2
 PASSWORD=$3
-SERVICE="A"  # 서비스 이름 설정
+SERVICE=$4
+USER_NAME=$5
 
 # 입력 검증
 if [[ -z "$SERVER_IP" || -z "$ACTION" || -z "$PASSWORD" ]]; then
@@ -18,9 +19,7 @@ if [[ "$ACTION" != "start" && "$ACTION" != "stop" && "$ACTION" != "restart" ]]; 
 fi
 
 # SSH 접속 및 sudo 명령 실행
-ssh -o StrictHostKeyChecking=no "username@$SERVER_IP" << EOF
-echo "$PASSWORD" | sudo -S systemctl $ACTION $SERVICE
-EOF
+sshpass -p "$PASSWORD" ssh -o StrictHostKeyChecking=no "$USER_NAME@$SERVER_IP" "echo $PASSWORD | sudo -S systemctl $ACTION $SERVICE" 2>&1
 
 # 실행 결과 출력
 if [[ $? -eq 0 ]]; then
