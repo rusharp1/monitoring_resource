@@ -35,13 +35,13 @@ class ServiceController:
             return False
         
     def is_valid_name(self, user_name):
-        return bool(re.match(r"^[a-zA-Z0-9_\-]+$", user_name))
+        return bool(re.match(r"^[a-zA-Z0-9_\-\.]+$", user_name))
 
     # Bash 스크립트 실행
     def run_bash(self):
         # 현재 파일의 디렉토리 경로
         current_dir = os.path.dirname(os.path.abspath(__file__))
-        self.bash_script = current_dir + "\control_server.sh"
+        self.bash_script = current_dir + "/control_server.sh"
         print(f"Running script: {self.bash_script}")
         
         try:
