@@ -73,7 +73,7 @@ class monitoring(QThread):
             self.current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
             # 쉘 명령어 실행 결과 가져오기
-            self.result = subprocess.check_output(f"bash {self.script_path} {self.process_name}", shell=True, text=True)
+            self.result = subprocess.check_output(f"bash {self.script_path} '{self.process_name}'", shell=True, text=True)
             self.result = self.result.splitlines()
 
             # 결과가 1개 이상이면 CPU, 메모리, 네트워크 데이터 추출
