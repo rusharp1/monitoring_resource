@@ -317,12 +317,3 @@ if __name__ == '__main__':
     sys.exit(app.exec_())
 
 
-
-
-# pyinstaller --onefile --windowed \
-#   --hidden-import=matplotlib.backends.backend_qt5agg \
-#   --hidden-import=openpyxl \
-#   --hidden-import=openpyxl.cell._writer \
-#   --add-data="/Users/kimsjin/coding/.venv/lib/python3.9/site-packages/matplotlib/mpl-data:matplotlib/mpl-data" \
-#   --add-data="/Users/kimsjin/coding/monitoring_Qt/status_process.sh:./" \
-#   Read_process_usage_withQt\ copy.py
